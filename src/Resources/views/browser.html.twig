@@ -1,0 +1,14 @@
+<div class="row">
+    {% for column in columns %}
+        <div class="col-md-3">
+            <div class="list-group">
+                <div class="list-group-item list-group-item-info">{{ column.name }}</div>
+                {% for resource in column.resources %}
+                <a href="{{ path('cmf_column_browser', { path: resource.path }) }}" class="list-group-item{% if selectedPath == resource.path %} active{% endif %}">
+                        {{ resource.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

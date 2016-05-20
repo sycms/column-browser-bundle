@@ -12,7 +12,8 @@ class AppKernel extends Kernel
         $bundles = [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
-            new \Symfony\Cmf\Bundle\ColumnBrowserBundle\CmfColumnBrowserBundle()
+            new \Symfony\Cmf\Bundle\ColumnBrowserBundle\CmfColumnBrowserBundle(),
+            new \Symfony\Bundle\TwigBundle\TwigBundle()
         ];
 
         return $bundles;

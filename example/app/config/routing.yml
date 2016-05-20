@@ -1,0 +1,6 @@
+cmf_column_browser:
+    path: /
+    defaults:
+        _controller: cmf_column_browser.controller:indexAction
+        repository: ~
+        path: ~

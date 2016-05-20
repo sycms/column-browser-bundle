@@ -1,3 +1,19 @@
 framework:
     secret: secret
+    router:
+        resource: %kernel.root_dir%/config/routing.yml
+    templating:
+        engines: ['twig']
+
+cmf_resource:
+    repositories:
+        default:
+            type: filesystem
+            base_dir: %kernel.root_dir%/..
+
+
+twig:
+    debug: true
+    strict_variables: true
+
 
