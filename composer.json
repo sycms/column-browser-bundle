@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "@stable",
+        "symfony/framework-bundle": "^2.8",
         "symfony-cmf/resource-bundle": "^1.0@dev",
         "twig/twig": "^1.24",
-        "symfony/twig-bundle": "^3.0"
+        "symfony/twig-bundle": "^2.8"
     },
     "require-dev": {
         "symfony/console": "@stable",

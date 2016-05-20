@@ -1,0 +1,4 @@
+<a class="list-group-item clearfix{{ resource.path == selectedPath ? ' active' : '' }}" href="{{ path('cmf_column_browser', { path: resource.path }) }}">
+    <span class="glyphicon glyphicon-{{ resource.hasChildren ? 'folder-close' : 'file' }}"></span>
+    {{ resource.name }}
+</a>

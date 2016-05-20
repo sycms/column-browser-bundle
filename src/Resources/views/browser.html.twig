@@ -1,14 +1,32 @@
 <div class="row">
     {% for column in columns %}
         <div class="col-md-3">
-            <div class="list-group">
-                <div class="list-group-item list-group-item-info">{{ column.name }}</div>
-                {% for resource in column.resources %}
-                <a href="{{ path('cmf_column_browser', { path: resource.path }) }}" class="list-group-item{% if selectedPath == resource.path %} active{% endif %}">
-                        {{ resource.name }}
-                    </a>
-                {% endfor %}
+            <!-- Column !-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h4>{{ column.name }}</h4>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-default glyphicon-plus"></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="list-group">
+                    {% for resource in column.resources %}
+                        {% if resource.path == selectedPath %}
+                            {% include "CmfColumnBrowserBundle:browser:_itemSelected.html.twig" %}
+                        {% else %}
+                            {% include "CmfColumnBrowserBundle:browser:_item.html.twig" %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% endfor %}
+</div>
+
+<div class="container">
+  <div class="list-group">
+  </div>
 </div>

@@ -29,10 +29,15 @@ class ColumnBuilder
 
             $columnPath = empty($elements) ? '/' : '/' . implode('/', $elements);
 
-            $column = new Column($columnName);
+            $column = new Column($columnName !== '/' ? $columnName : 'root');
             $resource = $this->repository->get($columnPath);
+            $children = $resource->listChildren();
+            
+            if (0 === $children->count()) {
+                continue;
+            }
 
-            foreach ($resource->listChildren() as $child) {
+            foreach ($children as $child) {
                 $column->addResource($child);
             }
 
