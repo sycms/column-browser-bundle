@@ -1,5 +1,5 @@
 {
-    "name": "symfony-cmf/column-browser-bundle",
+    "name": "sycms/resource-column-browser-bundle",
     "description": "Resource browser that uses columns.",
     "license": "MIT",
     "minimum-stability": "dev",

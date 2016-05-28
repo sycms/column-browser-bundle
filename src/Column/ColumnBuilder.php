@@ -18,8 +18,13 @@ class ColumnBuilder
     {
         $paths = [];
         $columns = [];
-        $columnNames = explode('/', ltrim($path, '/'));
-        array_unshift($columnNames, '/');
+
+        if ($path !== '/') {
+            $columnNames = explode('/', ltrim($path, '/'));
+            array_unshift($columnNames, '/');
+        } else {
+            $columnNames = [ '/' ];
+        }
 
         $elements = [];
         foreach ($columnNames as $columnName) {

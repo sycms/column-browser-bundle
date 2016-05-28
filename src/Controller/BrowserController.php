@@ -28,15 +28,17 @@ class BrowserController
         $repositoryName = $request->get('repository', null);
         $repository = $this->registry->get($repositoryName);
         $path = $request->query->get('path') ?: '/';
+        $template = $request->get('template', 'CmfColumnBrowserBundle::index.html.twig');
 
         $columnBuilder = new ColumnBuilder($repository);
         $columns = $columnBuilder->build($path);
 
         return $this->templating->renderResponse(
-            'CmfColumnBrowserBundle::index.html.twig',
+            $template,
             [
                 'selectedPath' => $path,
-                'columns' => $columns
+                'columns' => $columns,
+                'route' => $request->attributes->get('_route'),
             ],
             new Response()
         );
