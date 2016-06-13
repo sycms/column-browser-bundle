@@ -1,4 +1,21 @@
-<a class="list-group-item clearfix{{ resource.path == selectedPath ? ' active' : '' }}" href="{{ path(route, { path: resource.path }) }}">
-    <span class="glyphicon glyphicon-{{ resource.hasChildren ? 'folder-close' : 'file' }}"></span>
-    {{ resource.name }}
-</a>
+{% set description = cmf_resource_description(resource) %}
+
+<div class="item {{ resource.path == selectedPath ? ' inverted' : '' }}">
+    <div class="content">
+        <i class="{{ resource.hasChildren ? 'folder open' : 'file' }} icon"></i>
+        {{ resource.name }}
+    </div>
+    <div>
+        {% if description.has('link.edit.html') %}
+            <a href="{{ description.get('link.edit.html') }}"><i class="icon edit"></i></a>
+        {% endif %}
+    </div>
+    <div>
+        {% if resource.hasChildren %}
+            <a href="?path={{ resource.path }}" class="ui right floated">
+                <i class="angle double right icon"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>
+

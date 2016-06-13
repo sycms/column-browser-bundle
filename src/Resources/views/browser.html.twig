@@ -1,26 +1,16 @@
-<div class="row">
+<div class="ui four column aligned padded grid">
     {% for column in columns %}
-        <div class="col-md-3">
-            <!-- Column !-->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="pull-left">
-                        <h4>{{ column.name }}</h4>
-                    </div>
-                    <div class="pull-right">
-                        <a href="#" class="btn btn-default glyphicon-plus"></a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="list-group">
-                    {% for resource in column.resources %}
-                        {% if resource.path == selectedPath %}
-                            {% include "CmfColumnBrowserBundle:browser:_itemSelected.html.twig" %}
-                        {% else %}
-                            {% include "CmfColumnBrowserBundle:browser:_item.html.twig" %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
+        <div class="column">
+            <div class="ui segment">
+            <div class="item">
+                <h2>{{ column.name }}</h2>
+                <a href="#" class="btn btn-default glyphicon-plus"></a>
+            </div>
+            <div class="ui divided items">
+                {% for resource in column.resources %}
+                    {% include "CmfColumnBrowserBundle:browser:_item.html.twig" %}
+                {% endfor %}
+            </div>
             </div>
         </div>
     {% endfor %}

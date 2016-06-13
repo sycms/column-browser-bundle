@@ -8,6 +8,7 @@ use Symfony\Cmf\Bundle\ResourceBundle\Registry\ContainerRepositoryRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
+use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 
 class BrowserController
 {
@@ -15,7 +16,7 @@ class BrowserController
     private $registry;
 
     public function __construct(
-        ContainerRepositoryRegistry $registry,
+        RepositoryRegistry $registry,
         EngineInterface $templating
     )
     {

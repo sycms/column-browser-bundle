@@ -2,7 +2,7 @@
 
 namespace Symfony\Cmf\Bundle\ColumnBrowserBundle\Column;
 
-use Puli\Repository\Api\Resource\Resource;
+use Puli\Repository\Api\Resource\PuliResource;
 
 class Column
 {
@@ -16,7 +16,7 @@ class Column
         $this->isSelected = $isSelected;
     }
 
-    public function addResource(Resource $resource)
+    public function addResource(PuliResource $resource)
     {
         $this->resources[] = $resource;
     }
