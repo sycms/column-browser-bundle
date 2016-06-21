@@ -34,7 +34,6 @@ class ColumnBuilder
 
             $columnPath = empty($elements) ? '/' : '/' . implode('/', $elements);
 
-            $column = new Column($columnName !== '/' ? $columnName : 'root');
             $resource = $this->repository->get($columnPath);
             $children = $resource->listChildren();
             
@@ -42,11 +41,7 @@ class ColumnBuilder
                 continue;
             }
 
-            foreach ($children as $child) {
-                $column->addResource($child);
-            }
-
-            $columns[] = $column;
+            $columns[] = $resource;
         }
 
         return $columns;

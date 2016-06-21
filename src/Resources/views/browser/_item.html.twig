@@ -1,8 +1,13 @@
 {% set description = cmf_resource_description(resource) %}
 
-<div class="item {{ resource.path == selectedPath ? ' inverted' : '' }}">
+<div class="item {{ resource.path == selectedPath ? ' ui yellow' : '' }}">
     <div class="content">
-        <i class="{{ resource.hasChildren ? 'folder open' : 'file' }} icon"></i>
+        {% if resource.hasChildren %}
+            <i class="{{ selectedPath|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
+        {% else %}
+            <i class="file icon"></i>
+        {% endif %}
+
         {{ resource.name }}
     </div>
     <div>
