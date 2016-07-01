@@ -2,6 +2,7 @@
 
 <div class="item {{ resource.path == selectedPath ? ' ui yellow' : '' }}">
     <div class="content">
+        <span class="grippy"></span>
         {% if resource.hasChildren %}
             <i class="{{ selectedPath|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
         {% else %}
