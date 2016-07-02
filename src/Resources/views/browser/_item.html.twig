@@ -2,7 +2,7 @@
 
 <div class="item {{ resource.path == selectedPath ? ' ui yellow' : '' }}">
     <div class="content">
-        <span class="grippy"></span>
+        <span class="grippy moving"></span>
         {% if resource.hasChildren %}
             <i class="{{ selectedPath|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
         {% else %}
@@ -11,14 +11,14 @@
 
         {{ resource.name }}
     </div>
-    <div>
+    <div class="browsing">
         {% if description.has('link.edit.html') %}
             <a href="{{ description.get('link.edit.html') }}"><i class="icon edit"></i></a>
         {% endif %}
     </div>
     <div>
         {% if resource.hasChildren %}
-            <a href="?path={{ resource.path }}" class="ui right floated">
+            <a href="?path={{ resource.path }}" class="browsing ui right floated">
                 <i class="angle double right icon"></i>
             </a>
         {% endif %}
