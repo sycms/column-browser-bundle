@@ -1,6 +1,6 @@
 {% set description = cmf_resource_description(resource) %}
 
-<div class="item {{ resource.path == selectedPath ? ' ui yellow' : '' }}">
+<div item-path="{{ resource.path }}" class="item {{ resource.path == selectedPath ? ' ui yellow' : '' }}">
     <div class="content">
         <span class="grippy moving"></span>
         {% if resource.hasChildren %}

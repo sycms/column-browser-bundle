@@ -7,4 +7,8 @@
     <route id="_cmf_column_browser" path="/">
         <default key="_controller">cmf_column_browser.controller:indexAction</default>
     </route>
+
+    <route id="_cmf_column_browser_update" path="/cmf_browser_update">
+        <default key="_controller">cmf_column_browser.controller:updateAction</default>
+    </route>
 </routes>

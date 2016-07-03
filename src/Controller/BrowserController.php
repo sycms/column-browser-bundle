@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BrowserController
 {
@@ -43,5 +44,25 @@ class BrowserController
             ],
             new Response()
         );
+    }
+
+    public function updateAction(Request $request)
+    {
+        $repositoryName = $request->get('repository', null);
+        $repository = $this->registry->get($repositoryName);
+
+        foreach ($request->request->get('operations') as $operation) {
+            switch ($operation['type']) {
+                case 'reorder':
+                    $repository->reorder($operation['path'], (int) $operation['position']);
+                    break;
+                default:
+                    throw new \InvalidArgumentException(sprintf(
+                        'Invalid operation "%s"', $operation
+                    ));
+            }
+        }
+
+        return new JsonResponse($request->request->all());
     }
 }
