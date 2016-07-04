@@ -4,6 +4,19 @@
 
 <div class="browsing">
     <div class="ui pointing menu">
+
+        <div class="browsing ui simple dropdown item">
+            {{ repositoryName }}
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {% for repository in repositories %}
+                    {% if repository != repositoryName %}
+                    <div class="item"><a href="{{ path('_cmf_column_browser', { repository: repository }) }}">{{ repository }}</a></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
         <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
         <div class="header item">Path: {{ selectedPath }}</div>
     </div>

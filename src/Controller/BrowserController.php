@@ -34,10 +34,13 @@ class BrowserController
 
         $columnBuilder = new ColumnBuilder($repository);
         $columns = $columnBuilder->build($path);
+        $repositories = $this->registry->names();
 
         return $this->templating->renderResponse(
             $template,
             [
+                'repositories' => $repositories,
+                'repositoryName' => $repositoryName,
                 'selectedPath' => $path,
                 'columns' => $columns,
                 'route' => $request->attributes->get('_route'),
