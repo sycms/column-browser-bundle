@@ -8,6 +8,7 @@
         <service id="cmf_column_browser.controller" class="Symfony\Cmf\Bundle\ColumnBrowserBundle\Controller\BrowserController">
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="templating" />
+            <argument type="service" id="session" />
         </service>
     </services>
 

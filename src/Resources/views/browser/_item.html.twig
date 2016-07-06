@@ -18,7 +18,7 @@
     </div>
     <div>
         {% if resource.hasChildren %}
-            <a href="?path={{ resource.path }}" class="browsing ui right floated">
+        <a href="{{ path('_cmf_column_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">
                 <i class="angle double right icon"></i>
             </a>
         {% endif %}

@@ -10,27 +10,51 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BrowserController
 {
+    const SESSION_PATH = 'session.path';
+
     private $templating;
     private $registry;
+    private $session; 
 
     public function __construct(
         RepositoryRegistry $registry,
-        EngineInterface $templating
+        EngineInterface $templating,
+        Session $session
     )
     {
         $this->templating = $templating;
         $this->registry = $registry;
+        $this->session = $session;
     }
 
     public function indexAction(Request $request)
     {
         $repositoryName = $request->get('repository', null);
         $repository = $this->registry->get($repositoryName);
-        $path = $request->query->get('path') ?: '/';
+        $path = $request->query->get('path') ?: null;
         $template = $request->get('template', 'CmfColumnBrowserBundle::index.html.twig');
+
+        // resolve the repository name (it may have been determined automatically)
+        $repositoryName = $this->registry->getRepositoryAlias($repository);
+
+        if ($this->session->has(self::SESSION_PATH)) {
+            $paths = $this->session->get(self::SESSION_PATH);
+        }
+
+        if (null === $path && isset($paths[$repositoryName])) {
+            $path = $paths[$repositoryName];
+        }
+
+        if (null !== $path) {
+            $paths[$repositoryName] = $path;
+            $this->session->set(self::SESSION_PATH, $paths);
+        }
+
+        $path = $path ?: '/';
 
         $columnBuilder = new ColumnBuilder($repository);
         $columns = $columnBuilder->build($path);
@@ -52,9 +76,10 @@ class BrowserController
     public function updateAction(Request $request)
     {
         $repositoryName = $request->get('repository', null);
+        $operations = $request->request->get('operations', []);
         $repository = $this->registry->get($repositoryName);
 
-        foreach ($request->request->get('operations') as $operation) {
+        foreach ($operations as $operation) {
             switch ($operation['type']) {
                 case 'reorder':
                     $repository->reorder($operation['path'], (int) $operation['position']);
