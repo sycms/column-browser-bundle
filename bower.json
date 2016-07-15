@@ -1,0 +1,21 @@
+{
+  "name": "column-browser-bundle",
+  "homepage": "https://github.com/sycms/column-browser-bundle",
+  "authors": [
+    "dantleech <dan.t.leech@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "semantic-ui#^2.2.2",
+    "jquery-ui": "^1.12.0"
+  }
+}

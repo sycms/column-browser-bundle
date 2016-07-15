@@ -1,6 +1,6 @@
 <?php
 
-namespace Symfony\Cmf\Bundle\ColumnBrowserBundle\Example\app;
+namespace Sycms\Bundle\ColumnBrowserBundle\Example\app;
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -12,7 +12,7 @@ class AppKernel extends Kernel
         $bundles = [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
-            new \Symfony\Cmf\Bundle\ColumnBrowserBundle\CmfColumnBrowserBundle(),
+            new \Sycms\Bundle\ColumnBrowserBundle\SycmsColumnBrowserBundle(),
             new \Symfony\Bundle\TwigBundle\TwigBundle()
         ];
 

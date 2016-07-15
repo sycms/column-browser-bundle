@@ -1,9 +1,9 @@
 <?php
 
-namespace Symfony\Cmf\Bundle\ColumnBrowserBundle\Column;
+namespace Sycms\Bundle\ColumnBrowserBundle\Column;
 
 use Puli\Repository\Api\ResourceRepository;
-use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\Column;
+use Sycms\Bundle\ColumnBrowserBundle\Column\Column;
 
 class ColumnBuilder
 {

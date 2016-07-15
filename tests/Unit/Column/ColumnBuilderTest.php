@@ -1,11 +1,11 @@
 <?php
 
-namespace Symfony\Cmf\Bundle\ColumnBrowserBundle\Tests\Unit\Column;
+namespace Sycms\Bundle\ColumnBrowserBundle\Tests\Unit\Column;
 
 use Puli\Repository\Api\ResourceRepository;
 use Puli\Repository\Api\Resource\Resource;
 use Puli\Repository\FilesystemRepository;
-use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
+use Sycms\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
 
 class ColumnBuilderTest extends \PHPUnit_Framework_TestCase
 {

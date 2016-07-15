@@ -1,16 +1,16 @@
 <?php
 
-namespace Symfony\Cmf\Bundle\ColumnBrowserBundle\Controller;
+namespace Sycms\Bundle\ColumnBrowserBundle\Controller;
 
 use Puli\Repository\Api\ResourceRepository;
 use Symfony\Component\Templating\EngineInterface;
-use Symfony\Cmf\Bundle\ResourceBundle\Registry\ContainerRepositoryRegistry;
+use Sycms\Bundle\ResourceBundle\Registry\ContainerRepositoryRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Cmf\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
-use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
+use Sycms\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 
 class BrowserController
 {
@@ -33,10 +33,10 @@ class BrowserController
 
     public function indexAction(Request $request)
     {
-        $repositoryName = $request->get('repository', null);
+        $repositoryName = $request->get('repository') ?: 'default';
         $repository = $this->registry->get($repositoryName);
         $path = $request->query->get('path') ?: null;
-        $template = $request->get('template', 'CmfColumnBrowserBundle::index.html.twig');
+        $template = $request->get('template', '@SycmsColumnBrowser/index.html.twig');
 
         // resolve the repository name (it may have been determined automatically)
         $repositoryName = $this->registry->getRepositoryAlias($repository);

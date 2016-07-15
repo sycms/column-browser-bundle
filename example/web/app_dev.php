@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
-use Symfony\Cmf\Bundle\ColumnBrowserBundle\Example\app\AppKernel;
+use Sycms\Bundle\ColumnBrowserBundle\Example\app\AppKernel;
 
 require(__DIR__ . '/../../vendor/autoload.php');
 

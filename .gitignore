@@ -4,3 +4,6 @@ phpunit.xml
 composer.phar
 example/var
 example/web/bundles
+example/web/assets
+bower_components/
+node_modules/

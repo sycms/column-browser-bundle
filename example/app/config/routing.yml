@@ -1,6 +1,3 @@
 cmf_column_browser:
-    path: /
-    defaults:
-        _controller: cmf_column_browser.controller:indexAction
-        repository: ~
-        path: ~
+    prefix: /
+    resource: "@SycmsColumnBrowserBundle/Resources/config/routing.xml"

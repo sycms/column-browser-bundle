@@ -1,5 +1,6 @@
 framework:
     secret: secret
+    session: ~
     router:
         resource: %kernel.root_dir%/config/routing.yml
     templating:
@@ -9,7 +10,7 @@ cmf_resource:
     repositories:
         default:
             type: filesystem
-            base_dir: %kernel.root_dir%/..
+            base_dir: %kernel.root_dir%
 
 
 twig:

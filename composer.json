@@ -12,6 +12,7 @@
     "require": {
         "symfony/framework-bundle": "^2.8",
         "symfony-cmf/resource-bundle": "^1.0@dev",
+        "puli/repository": "@beta",
         "twig/twig": "^1.24",
         "symfony/twig-bundle": "^2.8"
     },
@@ -23,13 +24,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Symfony\\Cmf\\Bundle\\ColumnBrowserBundle\\": "src/"
+            "Sycms\\Bundle\\ColumnBrowserBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Symfony\\Cmf\\Bundle\\ColumnBrowserBundle\\Tests\\": "tests/",
-            "Symfony\\Cmf\\Bundle\\ColumnBrowserBundle\\Example\\": "example/"
+            "Sycms\\Bundle\\ColumnBrowserBundle\\Tests\\": "tests/",
+            "Sycms\\Bundle\\ColumnBrowserBundle\\Example\\": "example/"
         }
     },
     "extra": {
