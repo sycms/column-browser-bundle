@@ -30,3 +30,14 @@ span.grippy::after {
 .moving {
     display: none;
 }
+
+.column .ui.divided.items .item {
+}
+
+.ui .item.active {
+    background-color: #efefef;
+}
+
+.ui .item.active.current {
+    background-color: #eff;
+}

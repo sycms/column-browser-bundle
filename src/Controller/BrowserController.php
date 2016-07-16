@@ -11,6 +11,7 @@ use Sycms\Bundle\ColumnBrowserBundle\Column\ColumnBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
+use Sycms\Bundle\ColumnBrowserBundle\Column\Browser;
 
 class BrowserController
 {
@@ -56,8 +57,7 @@ class BrowserController
 
         $path = $path ?: '/';
 
-        $columnBuilder = new ColumnBuilder($repository);
-        $columns = $columnBuilder->build($path);
+        $browser = new Browser($repository, $path);
         $repositories = $this->registry->names();
 
         return $this->templating->renderResponse(
@@ -65,8 +65,7 @@ class BrowserController
             [
                 'repositories' => $repositories,
                 'repositoryName' => $repositoryName,
-                'selectedPath' => $path,
-                'columns' => $columns,
+                'browser' => $browser,
                 'route' => $request->attributes->get('_route'),
             ],
             new Response()

@@ -10,7 +10,7 @@ cmf_resource:
     repositories:
         default:
             type: filesystem
-            base_dir: %kernel.root_dir%
+            base_dir: /home/daniel/documents
 
 
 twig:

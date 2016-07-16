@@ -1,4 +1,22 @@
-<div class="ui one column grid padded">
+{% macro breadcrumb(resources, repositoryName) %}
+    {% if resources|length == 1 %}/{% else %}
+
+        {% for resource in resources %}
+
+            {% if loop.last %}
+                {{ resource.name }}
+            {% else %}
+                <a href="{{ path('_cmf_column_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ resource.name }}</a>&nbsp;/&nbsp;
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+{% endmacro %}
+
+{% import _self as macros %}
+
+<div class="ui one column grid">
     <h3></h3>
 </div>
 
@@ -18,7 +36,7 @@
         </div>
 
         <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
-        <div class="header item">Path: {{ selectedPath }}</div>
+        <div class="header item"><a href="{{ path('_cmf_column_browser_repository', { path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, repositoryName) }}</div>
     </div>
 </div>
 
@@ -33,8 +51,8 @@
         </div>
     </div>
 </div>
-<div class="ui four column aligned padded grid columnbrowser">
-    {% for column in columns %}
+<div class="ui four column grid padded columnbrowser">
+    {% for column in browser.columnsForDisplay %}
         {% set description = cmf_resource_description(column) %}
 
         <div class="column">
@@ -44,8 +62,8 @@
                         <h2>{{ column.name == '' ? 'root' : column.name }}</h2>
                     </div>
                     <div class="column right aligned">
-                        <div class="ui compact menu">
-                            {% if description.has('links.create_child.html') %}
+                        {% if description.has('links.create_child.html') %}
+                            <div class="ui compact menu">
                                 <div class="browsing ui simple dropdown item">
                                     <i class="plus icon"></i>
                                     <i class="dropdown icon"></i>
@@ -55,8 +73,8 @@
                                         {% endfor %}
                                     </div>
                                 </div>
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 
