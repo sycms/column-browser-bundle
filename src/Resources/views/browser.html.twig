@@ -79,9 +79,13 @@
                 </div>
 
                 <div class="ui divided items sortable">
+                    <div></div>
+
                     {% for resource in column.listChildren %}
                         {% include "@SycmsColumnBrowser/browser/_item.html.twig" %}
                     {% endfor %}
+
+                    <div></div>
                 </div>
             </div>
         </div>

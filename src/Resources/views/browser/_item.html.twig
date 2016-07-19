@@ -9,7 +9,9 @@
             <i class="file icon"></i>
         {% endif %}
 
-        {{ resource.name }}
+        <a class="browser-item" href="{{ path('_cmf_column_browser_repository', { path: resource.path, repository: repositoryName}) }}">
+            {{ resource.name }}
+        </a>
     </div>
     <div class="browsing">
         {% if description.has('link.edit.html') %}
@@ -17,11 +19,9 @@
         {% endif %}
     </div>
     <div>
-        {% if resource.hasChildren %}
         <a href="{{ path('_cmf_column_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">
-                <i class="large angle double right icon"></i>
-            </a>
-        {% endif %}
+            <i class="large angle double right icon"></i>
+        </a>
     </div>
 </div>
 

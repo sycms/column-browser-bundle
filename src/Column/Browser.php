@@ -34,11 +34,6 @@ class Browser
             $columnPath = empty($elements) ? '/' : '/' . implode('/', $elements);
 
             $resource = $this->repository->get($columnPath);
-            $children = $resource->listChildren();
-            
-            if (0 === $children->count()) {
-                continue;
-            }
 
             $columns[] = $resource;
         }
